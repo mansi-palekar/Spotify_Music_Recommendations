@@ -58,7 +58,7 @@ with st.container():
         st_lottie(animation3, height = 570, width = 570)
 
 # --- DATAFRAME ---
-bb100 = pd.read_csv(r"C:\Users\mansi\ai & ml univ.ai\DS 1 - data sci basics\Billboards with Audio Features.csv")
+bb100 = pd.read_csv("Billboards with Audio Features.csv")
         
 # --- RECC SYSTEM ---
 
