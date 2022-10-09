@@ -71,7 +71,7 @@ with st.container():
     user_songs = st.multiselect("Search for the song's title", df["Song & Artist Names"].drop_duplicates())
     if st.button("Confirm Selection"):
         user_df = df[df['Song & Artist Names'].isin(user_songs)]
-        recs_df = song_recommendations(user_df)
+        #recs_df = song_recommendations(user_df)
         
         st.subheader("Below are the profiles of your chosen songs, using which we'll analyse your music tastes..")
         cols = st.columns(5)
@@ -83,17 +83,17 @@ with st.container():
         st.write("")
         st.write("")
         st.title("Based on your music taste, you might also like:")
-        cols = st.columns(5)       
-        for i in range(0,5):
-            with cols[i]:
-                st.image(recs_df['Album Cover Art'].values[i])
-                rec_lines = f"""
-                            <p>
-                            <b> Song: </b> {recs_df['Song Name'].values[i]} <br>
-                            <b> Artist: </b> {recs_df['Artist Names'].values[i]} <br>
-                            <a href = {recs_df['Spotify Link'].values[i]}> <b>Listen on Spotify</b> <img alt="Spotify"
-                            src = "https://1000logos.net/wp-content/uploads/2021/04/Spotify-logo.png"
-                            width=42 height=25> </a>
-                            </p>
-                            """
-                st.markdown(rec_lines, unsafe_allow_html = True)
+#         cols = st.columns(5)       
+#         for i in range(0,5):
+#             with cols[i]:
+#                 st.image(recs_df['Album Cover Art'].values[i])
+#                 rec_lines = f"""
+#                             <p>
+#                             <b> Song: </b> {recs_df['Song Name'].values[i]} <br>
+#                             <b> Artist: </b> {recs_df['Artist Names'].values[i]} <br>
+#                             <a href = {recs_df['Spotify Link'].values[i]}> <b>Listen on Spotify</b> <img alt="Spotify"
+#                             src = "https://1000logos.net/wp-content/uploads/2021/04/Spotify-logo.png"
+#                             width=42 height=25> </a>
+#                             </p>
+#                             """
+#                 st.markdown(rec_lines, unsafe_allow_html = True)
