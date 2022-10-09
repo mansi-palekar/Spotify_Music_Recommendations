@@ -1,6 +1,5 @@
 pandas
 numpy
-math
 scipy
 matplotlib.pyplot
 matplotlib.patheffects
