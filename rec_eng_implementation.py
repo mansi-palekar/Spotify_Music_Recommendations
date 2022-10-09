@@ -17,11 +17,9 @@ df = pd.read_csv("Billboards with Audio Features + Genres, Artists OHE.csv")
 # Loading the given songs dataframe
 user_df = df.iloc[4000:4005]
 
-# Loading the rec songs dataframe
-rec_df = df.iloc[5000:5005]
-
-def song_recommendations(user_df):
-    return rec_df
+#def song_recommendations(user_df):
+#    rec_df = 
+#    return rec_df
 
 # PIZZA CHART
 

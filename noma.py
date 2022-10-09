@@ -3,7 +3,7 @@ import requests
 import streamlit as st
 from streamlit_lottie import st_lottie
 
-from rec_eng_implementation import song_recommendations
+#from rec_eng_implementation import song_recommendations
 from rec_eng_implementation import pizza_chart
 
 # --- CONFIGURATION ---
