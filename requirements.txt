@@ -2,7 +2,8 @@ pandas
 numpy
 math
 scipy
-matplotlib
+matplotlib.pyplot
+matplotlib.patheffects
 seaborn
 mplsoccer
 requests
