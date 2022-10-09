@@ -61,16 +61,16 @@ with st.container():
         st_lottie(animation3, height = 570, width = 570)
 
 # --- DATAFRAMES ---
-bbhot100_df = pd.read_csv("bbhot100_df.csv")
+df = pd.read_csv("Billboards with Audio Features + Genres, Artists OHE.csv")
         
 # --- RECC SYSTEM ---
 
 
 with st.container():
     st.title("Pick your five favourite songs")
-    user_songs = st.multiselect("Search for the song's title", bbhot100_df["Song & Artist Names"].drop_duplicates())
+    user_songs = st.multiselect("Search for the song's title", df["Song & Artist Names"].drop_duplicates())
     if st.button("Confirm Selection"):
-        user_df = bbhot100_df[bbhot100_df['Song & Artist Names'].isin(user_songs)]
+        user_df = df[df['Song & Artist Names'].isin(user_songs)]
         recs_df = song_recommendations(user_df)
         
         st.subheader("Below are the profiles of your chosen songs, using which we'll analyse your music tastes..")

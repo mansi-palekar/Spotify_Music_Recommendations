@@ -12,13 +12,13 @@ robotoBold = FontManager(('https://github.com/Chaitanya98/Football-Analytics/blo
 robotoMed = FontManager(('https://github.com/Chaitanya98/Football-Analytics/blob/main/Barcalytix/Fonts/GothamMedium.ttf?raw=true'))
 
 # Loading the main dataframe
-df = pd.read_csv("bbhot100_df.csv")
+df = pd.read_csv("Billboards with Audio Features + Genres, Artists OHE.csv")
 
 # Loading the given songs dataframe
 user_df = df.iloc[4000:4005]
 
 # Loading the rec songs dataframe
-rec_df = pd.read_csv('rec_df.csv')
+rec_df = df.iloc[5000:5005]
 
 def song_recommendations(user_df):
     return rec_df
