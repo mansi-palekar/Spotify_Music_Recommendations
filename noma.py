@@ -3,6 +3,9 @@ import requests
 import streamlit as st
 from streamlit_lottie import st_lottie
 
+from rec_eng_implementation import song_recommendations
+from rec_eng_implementation import pizza_chart
+
 # --- CONFIGURATION ---
 st.set_page_config(page_title = "NOMA's Music Recommendation System", page_icon = ":notes:", layout = "wide")
 
@@ -57,20 +60,40 @@ with st.container():
         #st_lottie(animation2, height = 570, width = 490)
         st_lottie(animation3, height = 570, width = 570)
 
-# --- DATAFRAME ---
-bb100 = pd.read_csv("Billboards with Audio Features.csv")
+# --- DATAFRAMES ---
+bbhot100_df = pd.read_csv("bbhot100_df.csv")
         
 # --- RECC SYSTEM ---
 
+
 with st.container():
-    st.title("Pick a song")
-    left_col, center_col, right_col = st.columns([1,2,1])
-    with center_col:
-        st.selectbox("Search for the song's title", bb100["Song Name"].drop_duplicates()) 
-        st.selectbox("Who's the artist of this song?", bb100["Artist Names"].drop_duplicates())
-        #st.button("Recommend me", on_click=st.write("Making recommendations, please wait."))
-        if st.button("Recommend me"):
-            #recs = song_recommendation()
-            st.subheader("Your song recommendations are:")
-            
+    st.title("Pick your five favourite songs")
+    user_songs = st.multiselect("Search for the song's title", bbhot100_df["Song & Artist Names"].drop_duplicates())
+    if st.button("Confirm Selection"):
+        user_df = bbhot100_df[bbhot100_df['Song & Artist Names'].isin(user_songs)]
+        recs_df = song_recommendations(user_df)
         
+        st.subheader("Below are the profiles of your chosen songs, using which we'll analyse your music tastes..")
+        cols = st.columns(5)
+        for i in range(0,5):
+            with cols[i]:
+                st.pyplot(pizza_chart(user_df['Song Name'].values[i]))
+                st.markdown(f"**Song:** {user_df['Song Name'].values[i]}")
+                
+        st.write("")
+        st.write("")
+        st.title("Based on your music taste, you might also like:")
+        cols = st.columns(5)       
+        for i in range(0,5):
+            with cols[i]:
+                st.image(recs_df['Album Cover Art'].values[i])
+                rec_lines = f"""
+                            <p>
+                            <b> Song: </b> {recs_df['Song Name'].values[i]} <br>
+                            <b> Artist: </b> {recs_df['Artist Names'].values[i]} <br>
+                            <a href = {recs_df['Spotify Link'].values[i]}> <b>Listen on Spotify</b> <img alt="Spotify"
+                            src = "https://1000logos.net/wp-content/uploads/2021/04/Spotify-logo.png"
+                            width=42 height=25> </a>
+                            </p>
+                            """
+                st.markdown(rec_lines, unsafe_allow_html = True)

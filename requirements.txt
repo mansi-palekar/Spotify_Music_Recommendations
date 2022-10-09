@@ -1,4 +1,10 @@
 pandas
+numpy
+math
+scipy
+matplotlib
+seaborn
+mplsoccer
 requests
 streamlit
 streamlit_lottie
