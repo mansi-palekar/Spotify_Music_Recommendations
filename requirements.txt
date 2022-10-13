@@ -6,3 +6,5 @@ streamlit_lottie
 scipy
 scikit-learn
 spotipy
+matplotlib
+seaborn
