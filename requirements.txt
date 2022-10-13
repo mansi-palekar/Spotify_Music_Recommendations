@@ -1,5 +1,5 @@
 pandas
 numpy
 requests
-streamlit
+streamlit==1.13.0
 streamlit_lottie
