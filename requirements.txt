@@ -1,12 +1,5 @@
 pandas
 numpy
-math
-scipy
-sklearn
-spotipy
-matplotlib
-seaborn
-mplsoccer
 requests
 streamlit
 streamlit_lottie
