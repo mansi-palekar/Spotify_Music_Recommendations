@@ -295,8 +295,11 @@ def get_rec_df(rec_songs_idx):
         song = sp.track(uri)
         album_art = song['album']['images'][0]['url']
         album_art_list.append(album_art)
-    top10_df.loc[:,'Album Cover Art'] = album_art_list
-    return top10_df
+        
+    recs_df = top10_df.copy()
+    recs_df['Album Cover Art'] = album_art_list
+    
+    return recs_df
 
 
 # MAIN FUNCTION
