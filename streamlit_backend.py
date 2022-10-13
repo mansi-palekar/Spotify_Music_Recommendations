@@ -282,8 +282,8 @@ def get_similarity_df(user_pref_embeddings):
     embeddings_popped = embeddings_all_df.drop(list(user_pref_embeddings.index))
     mean_embedding_user = np.mean(user_pref_embeddings.values, axis = 0)
     similarity_df = pd.DataFrame(cosine_similarity(X = embeddings_popped, Y = mean_embedding_user.reshape(1,-1),dense_output=True))
-    similarity_df = similarity_df.sort_values(0, ascending = False)
-    similarity_df = similarity_df.drop_duplicates()
+    similarity_df.sort_values(0, ascending = False, inplace = True)
+    similarity_df.drop_duplicates(inplace = True)
     return similarity_df
 
 # 3 Get recommended songs and their album art
@@ -296,8 +296,7 @@ def get_rec_df(rec_songs_idx):
         album_art = song['album']['images'][0]['url']
         album_art_list.append(album_art)
     top10_df['Album Cover Art'] = album_art_list
-    recs_df = top10_df
-    return recs_df
+    return top10_df
 
 
 # MAIN FUNCTION
