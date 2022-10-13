@@ -3,3 +3,6 @@ numpy
 requests
 streamlit==1.13.0
 streamlit_lottie
+scipy
+scikit-learn
+spotipy
