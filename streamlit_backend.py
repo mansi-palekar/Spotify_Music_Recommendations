@@ -283,6 +283,7 @@ def get_similarity_df(user_pref_embeddings):
     mean_embedding_user = np.mean(user_pref_embeddings.values, axis = 0)
     similarity_df = pd.DataFrame(cosine_similarity(X = embeddings_popped, Y = mean_embedding_user.reshape(1,-1),dense_output=True))
     similarity_df = similarity_df.sort_values(0, ascending = False)
+    similarity_df = similarity_df.drop_duplicates()
     return similarity_df
 
 # 3 Get recommended songs and their album art
