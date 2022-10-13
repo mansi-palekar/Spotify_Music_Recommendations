@@ -65,7 +65,7 @@ def getSongValues(songName):
     
     featColumns = ['Popularity','Acousticness','Danceability','Energy','Instrumentalness','Loudness','Speechiness','Tempo','Valence']
     
-    songProfile = df[df['Song and Artist'].str.contains(songName)]
+    songProfile = df[df['Song and Artist']==songName]
     songProfile.reset_index(inplace=True,drop=True)
 
     songFeats = songProfile.filter(featColumns)

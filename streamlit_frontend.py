@@ -126,7 +126,7 @@ with st.container():
             cols = st.columns(5)
             for i in range(0,5):
                 with cols[i]:
-                    st.pyplot(plotPizza(getSongValues(user_df['Song'].values[i])))
+                    st.pyplot(plotPizza(getSongValues(user_df['Song and Artist'].values[i])))
                     st.markdown(f"""<p align = 'center'> <b> Song: </b> {user_df['Song'].values[i]} <br>
                                 <b> Artist: </b> {user_df['Artist'].values[i]} <br>
                                 <a href = {'https://open.spotify.com/track/' + user_df['URI'].values[i].split(":")[2]}>
