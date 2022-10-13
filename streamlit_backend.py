@@ -14,9 +14,6 @@ import seaborn as sns
 from mplsoccer import PyPizza, FontManager
 import matplotlib.patheffects as path_effects
 
-import os
-from dotenv import load_dotenv
-
 # --- LOADING REQUIRED DATAFRAMES ---
 
 # Loading the main dataframe
@@ -28,9 +25,8 @@ df.drop(['Artist 1', 'Artist 2', 'Artist 3', 'Artist 4', 'Artist 5', 'Artist 6',
 embeddings_all_df = pd.read_csv("df_embeddings.csv")
 
 # --- SETTING UP SPOTIFY ---
-load_dotenv()
-clientID = os.getenv("spotifyID")
-clientSecret = os.getenv("spotifySecret")
+clientID = '60f1e0a91b764b9eac6b5d652f8bb384'
+clientSecret = '5f34cf94b74c43ec853706b274e7675b'
 client_credentials_manager = SpotifyClientCredentials(client_id=clientID, client_secret=clientSecret)
 sp = spotipy.Spotify(client_credentials_manager = client_credentials_manager)
 
