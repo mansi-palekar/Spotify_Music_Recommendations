@@ -5,7 +5,7 @@ import requests
 import streamlit as st
 import streamlit.components.v1 as components
 from streamlit_lottie import st_lottie
-from streamlit_backend import getRecommendations, quality, getSongValues, getArtistValues, getGenreValues, plotArtist, plotGenre, plotPizza
+from streamlit_backend import getRecommendations, getMoodPlaylist, quality, getSongValues, getArtistValues, getGenreValues, plotArtist, plotGenre, plotPizza
 
 # --- LOADING REQUIRED DATAFRAMES ---
 
@@ -77,7 +77,6 @@ st.markdown(page_bg, unsafe_allow_html=True)
 
 # Title and intro section
 # Heading
-#heading_img = "<p style = 'font-size: 45px;'> <img src = 'https://www.freepnglogos.com/uploads/spotify-logo-png/spotify-icon-black-17.png' width=100 height=100><b>Spotify Music Recommendation System</b></p>"
 heading_animation = "<p style = 'font-size: 70px;'><b>Spotify Music Recommendation System</b></p>"
 # Intro lines
 intro_para = """
@@ -106,6 +105,8 @@ with st.container():
         
 
 # --- RECC SYSTEM ---
+
+user_df = None
 
 with st.container():
     st.title("Pick your five favourite songs :musical_note:") 
@@ -172,14 +173,14 @@ with st.container():
 
 st.title("Explore more")
 line1 = """<p style = "font-size: 22px;"> 
-Explore the profiles of your favourite artists and their genres by opting for an artist or an artist's genre. The resultant visualisations will show the trajectory of its popularity as well as how dominant various audio features are for the selected choice.
+Explore the profiles of your favourite artists and their genres by opting for an artist or an artist's genre. The resultant visualisations will show the trajectory of its popularity as well as how dominant various audio features are for the selected choice. Moreover, you can also listen to some of our mood playlists in the Playlists tab.
 </p> """
 st.markdown(line1, unsafe_allow_html = True)
 
 
 # --- TAB CONFIG ---
 
-listTabs = ["Artist", "Genre"]
+listTabs = ["Artist", "Genre", "Playlists"]
 tabs_font_css = st.markdown("""
 <style> button[data-baseweb="tab"] {font-size: 26px; font-weight: 520; background-color: #ffffff; color: #000000;}
 button[data-baseweb="tab"]:hover {font-size: 26px; font-weight: 520; background-color: #1DDA63; color:#FFFFFF;}
@@ -188,10 +189,11 @@ button[data-baseweb="tab"]:focus {font-size: 26px; font-weight: 520; background-
 
 chosen_artist = None
 chosen_genre = None
+chosen_mood = None
 
 with st.container():   
     
-    tabs = st.tabs([s.center(24,"\u2001") for s in listTabs])
+    tabs = st.tabs([s.center(21,"\u2001") for s in listTabs])
     
     # TAB 1 ARTIST PROFILE
     
@@ -256,7 +258,70 @@ with st.container():
                 vals = getGenreValues(chosen_genre)
                 st.pyplot(plotPizza(vals))
                 st.markdown(f"<p align = 'center' style = 'font-size: 20px;'> A percentile rank indicates the percentage of scores in the frequency distribution that are less than that score. <br> In simple terms, a mean percentile rank of {vals[1]} for Acousticness for the {chosen_genre} genre indicates that {vals[1]}% of the songs in our database fall below the mean acousticness of the songs belonging to the {chosen_genre} genre.</p>", unsafe_allow_html = True)
+         
+        
+        # TAB 3 PLAYLISTS
+        
+        with tabs[2]:
+            moods = ["Trending songs", "Dance party", "Monday blues", "Energizing", "Positive vibes"]
+                
+            # Code to enable choosing a mood
+            st.subheader("Choose a Mood") 
+            col1, col2 = st.columns([1.6, 1])
+            with col1:
+                user_mood = st.selectbox(label = "Search", options = moods, label_visibility = 'collapsed')    
+            with col2:
+                if st.button("Confirm Selection", key = 3):
+                    chosen_mood = user_mood 
+                
+            # Playlist display
+            if chosen_mood!= None:
+                
+                mood_df = getMoodPlaylist(chosen_mood)
+                
+                st.subheader(f"Here's a {chosen_mood} playlist for you,")
+                
+                with st.container():
+                    cols = st.columns(5)       
+                    for i in range(0,5):
+                        with cols[i]:
+                            st.image(mood_df['Album Cover Art'].values[i], use_column_width = True)
+                            st.markdown(f"""<p align = 'center'> <b> Song: </b> {mood_df['Song'].values[i]} <br>
+                                        <b> Artist: </b> {mood_df['Artist'].values[i]} <br>
+                                        <a href = {'https://open.spotify.com/track/' + mood_df['URI'].values[i].split(":")[2]}>
+                                        <img alt="Spotify" src = {spotify_logo} width=30 height=30><b>Listen on Spotify</b></a>
+                                        </p>""", 
+                                        unsafe_allow_html = True)
+                with st.container():
+                    cols = st.columns(5)
+                    for i in range(0,5):
+                        with cols[i]:
+                            st.image(mood_df['Album Cover Art'].values[5+i], use_column_width = True)
+                            st.markdown(f"""<p align = 'center'> <b> Song: </b> {mood_df['Song'].values[5+i]} <br>
+                                        <b> Artist: </b> {mood_df['Artist'].values[5+i]} <br>
+                                        <a href = {'https://open.spotify.com/track/' + mood_df['URI'].values[5+i].split(":")[2]}>
+                                        <img alt="Spotify" src = {spotify_logo} width=30 height=30><b>Listen on Spotify</b></a>
+                                        </p>""", 
+                                        unsafe_allow_html = True)
     
 
+# ---------------------------------------------------------------------------------------------- #    
 
+# --- FOOTER ---
+footer="""<style>
+.footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: #9bf0e1;
+color: black;
+text-align: center;
+}
+</style>
+<div class="footer">
+<p>Developed with ❤ by Mansi, Chaitanya, Aditya, and Vrish</p>
+</div>
+"""
+st.markdown(footer, unsafe_allow_html=True)
 

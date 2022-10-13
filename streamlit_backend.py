@@ -65,11 +65,11 @@ def getSongValues(songName):
     
     featColumns = ['Popularity','Acousticness','Danceability','Energy','Instrumentalness','Loudness','Speechiness','Tempo','Valence']
     
-    songProfile = df[df['Song Name'].str.contains(songName)]
+    songProfile = df[df['Song and Artist'].str.contains(songName)]
     songProfile.reset_index(inplace=True,drop=True)
 
     songFeats = songProfile.filter(featColumns)
-    songFeats = list(songFeats.loc[0])
+    songFeats = list(songFeats.iloc[0])
 
     values = []
     for x in range(len(featColumns)):
@@ -314,3 +314,28 @@ def getRecommendations(user_df):
     recs_df = get_rec_df(rec_songs_idx = rec_songs_idx)
     
     return recs_df
+
+# MOOD PLAYLIST GENERATOR
+
+def getMoodPlaylist(chosen_mood):
+    
+    if chosen_mood == "Trending songs":
+        rec_songs_idx = list(df.sort_values(by = ['Popularity'], ascending = False).index)[0:10]
+        
+    elif chosen_mood == "Dance party":
+        rec_songs_idx = list(df.sort_values(by = ['Danceability'], ascending = False).index)[0:10]
+        
+    elif chosen_mood == "Monday blues":
+        rec_songs_idx = list(df.sort_values(by = ['Valence'], ascending = True).index)[0:10]
+        
+    elif chosen_mood == "Energizing":
+        rec_songs_idx = list(df.sort_values(by = ['Energy'], ascending = False).index)[0:10]
+        
+    elif chosen_mood == "Positive vibes":
+        rec_songs_idx = list(df.sort_values(by = ['Valence'], ascending = False).index)[0:10]
+        
+    mood_df = get_rec_df(rec_songs_idx = rec_songs_idx)
+    
+    return mood_df
+    
+    
