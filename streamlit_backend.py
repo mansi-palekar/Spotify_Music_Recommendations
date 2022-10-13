@@ -18,8 +18,6 @@ import matplotlib.patheffects as path_effects
 
 # Loading the main dataframe
 df = pd.read_csv("Billboards with Audio Features + Genres,Artists OHE (Final).csv", low_memory = False)
-df.drop(['Artist 1', 'Artist 2', 'Artist 3', 'Artist 4', 'Artist 5', 'Artist 6', 'Artist 7', 'Song and Artist'],
-        axis = 1, inplace = True)
 
 # Loading the embeddings dataframe
 embeddings_all_df = pd.read_csv("df_embeddings.csv")
