@@ -1,5 +1,0 @@
-pandas
-numpy
-requests
-streamlit
-streamlit_lottie
