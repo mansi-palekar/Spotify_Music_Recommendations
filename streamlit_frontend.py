@@ -81,7 +81,7 @@ heading_animation = "<p style = 'font-size: 70px;'><b>Spotify Music Recommendati
 # Intro lines
 intro_para = """
 <p style = "font-size: 24px;">
-This recommendation system, along with the website, has been created by the team <span style="font-size:120%"><b>Not a Modelling Agency</b></span> as part of the Final Project for Univ.AI\'s DS1C4 Course.
+This recommendation system, along with the website, has been created by the team <span style="font-size:120%"><b>Not a Modelling Agency</b></span>.
 <br> <br>
 To try out the algorithm, pick out five songs from our database which consists of <b> Billboard Hot 100 tracks</b> from the time period <b>1960 to 2021</b> and our system will analyse various attributes such as artist, artist's genres, audio features, and more to recommend you songs that we hope you might like. <br> <br>
 Along with the recommendations, you also get to see the song and artist profiles of your selected tracks. These song profiles have been created using the features Spotify itself provides. You can find out more in depth about each feature <a href = {https://developer.spotify.com/discover/#:~:text=Audio%20Features%20%26%20Analysis,-Explore%20audio%20features&text=For%20more%20advanced%20use%20cases,Context%3A%20Liveness%2C%20Acousticness}> <i>here</i></a>.
