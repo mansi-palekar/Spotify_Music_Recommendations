@@ -1,5 +1,11 @@
 # Spotify Music Recommendations
 
+![license logo](https://img.shields.io/github/license/meraxes-99/Spotify-Music-Recommendations)
+![last commit](https://img.shields.io/github/last-commit/meraxes-99/Spotify-Music-Recommendations)
+![repo size](https://img.shields.io/github/repo-size/meraxes-99/Spotify-Music-Recommendations)
+
+[![Watch the video](https://drive.google.com/u/0/uc?id=1eoFOnI-6eEU3UwfIcwy3CknXHVqNKjYq&export=download)](https://youtu.be/gJBP81oExrA)
+
 A recommender system, or a recommendation system, is a type of filtering system that seeks to predict the “rating” or “preference” a user would give to an item.
 
 Recommender systems are typically classified into the following categories:
@@ -27,3 +33,10 @@ The remaining files in the repo are used for streamlit deployment.
 #
 
 Link to the Streamlit website: https://meraxes-99-spotify-music-recommendati-streamlit-frontend-ceca43.streamlitapp.com/
+
+How to run the project:
+1. Fork the repository to local machine
+2. Install Python 3.10 and install all additional dependencies in `requirements.txt` using the command `pip install -r ./requirements.txt`.
+3. Run the Jupyter notebook from the terminal using the command `python -m jupyterlab`.
+4. Run the Streamlit app from the terminal using the command `streamlit run app.py`.
+5. The Streamlit app will be hosted on `localhost:8501`.
