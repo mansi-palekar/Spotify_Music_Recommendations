@@ -38,5 +38,5 @@ How to run the project:
 1. Fork the repository to local machine
 2. Install Python 3.10 and install all additional dependencies in `requirements.txt` using the command `pip install -r ./requirements.txt`.
 3. Run the Jupyter notebook from the terminal using the command `python -m jupyterlab`.
-4. Run the Streamlit app from the terminal using the command `streamlit run app.py`.
+4. Run the Streamlit app from the terminal using the command `streamlit run streamlit_frontend.py && streamlit run streamlit_backend.py`.
 5. The Streamlit app will be hosted on `localhost:8501`.
