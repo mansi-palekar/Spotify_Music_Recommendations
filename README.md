@@ -1,6 +1,5 @@
 # Spotify Music Recommendations
 
-![license logo](https://img.shields.io/github/license/meraxes-99/Spotify_Music_Recommendations)
 ![last commit](https://img.shields.io/github/last-commit/meraxes-99/Spotify_Music_Recommendations)
 ![repo size](https://img.shields.io/github/repo-size/meraxes-99/Spotify_Music_Recommendations)
 
