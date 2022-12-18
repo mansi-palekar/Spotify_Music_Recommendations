@@ -1,8 +1,9 @@
 # Spotify Music Recommendations
-Watch the video here,
 
 ![last commit](https://img.shields.io/github/last-commit/meraxes-99/Spotify_Music_Recommendations)
 ![repo size](https://img.shields.io/github/repo-size/meraxes-99/Spotify_Music_Recommendations)
+
+Watch the video below:
 
 [![Watch the video](https://drive.google.com/u/0/uc?id=1eoFOnI-6eEU3UwfIcwy3CknXHVqNKjYq&export=download)](https://youtu.be/gJBP81oExrA)
 
