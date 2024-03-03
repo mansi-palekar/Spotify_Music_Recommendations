@@ -31,8 +31,8 @@ sp = spotipy.Spotify(client_credentials_manager = client_credentials_manager)
 # --- SETTING REQUIRED FONTS AND COLOURS ---
 
 # FONTS
-robotoBold = FontManager(('https://github.com/Chaitanya98/Football-Analytics/blob/main/Barcalytix/Fonts/GothamBold.ttf?raw=true'))
-robotoMed = FontManager(('https://github.com/Chaitanya98/Football-Analytics/blob/main/Barcalytix/Fonts/GothamMedium.ttf?raw=true'))
+# robotoBold = FontManager(('https://github.com/Chaitanya98/Football-Analytics/blob/main/Barcalytix/Fonts/GothamBold.ttf?raw=true'))
+# robotoMed = FontManager(('https://github.com/Chaitanya98/Football-Analytics/blob/main/Barcalytix/Fonts/GothamMedium.ttf?raw=true'))
 
 # COLOURS
 spotifyGreen = '#1dda63'
@@ -156,15 +156,15 @@ def plotArtist(artist):
     ax.set_xlim([minYear,2021])
     ax.set_xticks(np.arange(minYear,2021,(2021-minYear)/10))
     # Setting the x label as year for every subplot
-    ax.set_xlabel('Year', fontsize=16, labelpad=10,fontproperties=robotoMed.prop, color='k')
-    ax.set_ylabel('Hit Quality', fontsize=16, labelpad=10,fontproperties=robotoMed.prop, color='k')
+    ax.set_xlabel('Year', fontsize=16, labelpad=10, color='k') # fontproperties=robotoMed.prop
+    ax.set_ylabel('Hit Quality', fontsize=16, labelpad=10, color='k') # fontproperties=robotoMed.prop,
     ax.xaxis.set_major_locator(MaxNLocator(integer=True))
     # Customizing the x and y ticklabels
     for ticklabel in ax.get_yticklabels():
-        ticklabel.set_fontproperties(robotoMed.prop)
+        # ticklabel.set_fontproperties(robotoMed.prop)
         ticklabel.set_fontsize(14)
     for ticklabel in ax.get_xticklabels():
-        ticklabel.set_fontproperties(robotoMed.prop)
+        # ticklabel.set_fontproperties(robotoMed.prop)
         ticklabel.set_fontsize(14)
     ax.tick_params(axis='both', which='major',labelcolor='k',length=0,color='#2b2b2b')
     
@@ -201,14 +201,14 @@ def plotGenre(genre):
     # Setting the limits for x and y axes 
     ax.set_xlim([1960,2021])
     # Setting the x label as year for every subplot
-    ax.set_xlabel('Year', fontsize=16, labelpad=10,fontproperties=robotoMed.prop, color='k')
-    ax.set_ylabel('Hit Quality', fontsize=16, labelpad=10,fontproperties=robotoMed.prop, color='k')
+    ax.set_xlabel('Year', fontsize=16, labelpad=10, color='k') # fontproperties=robotoMed.prop, 
+    ax.set_ylabel('Hit Quality', fontsize=16, labelpad=10, color='k') # fontproperties=robotoMed.prop
     # Customizing the x and y ticklabels
     for ticklabel in ax.get_yticklabels():
-        ticklabel.set_fontproperties(robotoMed.prop)
+        # ticklabel.set_fontproperties(robotoMed.prop)
         ticklabel.set_fontsize(14)
     for ticklabel in ax.get_xticklabels():
-        ticklabel.set_fontproperties(robotoMed.prop)
+        # ticklabel.set_fontproperties(robotoMed.prop)
         ticklabel.set_fontsize(14)
     ax.tick_params(axis='both', which='major',labelcolor='k',length=0,color='#2b2b2b')
 
@@ -250,10 +250,15 @@ def plotPizza(values):
                                 param_location=115,
                                 blank_alpha=1,                 
                                 kwargs_slices=dict(edgecolor="k", zorder=2, linewidth=2,alpha=.8,linestyle='-'),                               
+                                # kwargs_params=dict(color="k", fontsize=22, fontweight='bold',
+                                #                    va="center",fontproperties=robotoMed.prop),
                                 kwargs_params=dict(color="k", fontsize=22, fontweight='bold',
-                                                   va="center",fontproperties=robotoMed.prop),
+                                                   va="center"),
+                                # kwargs_values=dict(color="k", fontsize=18,va='center',
+                                #                    zorder=3,fontproperties=robotoMed.prop,
+                                #                    bbox=dict(edgecolor="k",boxstyle="round,pad=0.2", lw=1.5),
                                 kwargs_values=dict(color="k", fontsize=18,va='center',
-                                                   zorder=3,fontproperties=robotoMed.prop,
+                                                   zorder=3,
                                                    bbox=dict(edgecolor="k",boxstyle="round,pad=0.2", lw=1.5))                              
                               )
 
