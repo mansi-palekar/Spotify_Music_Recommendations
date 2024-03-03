@@ -15,14 +15,18 @@ genres = pd.Series([i.split('Genre: ', 1)[1].title() for i in list(df.filter(reg
 
 # --- LINKS FOR REQUIRED ANIMATION AND IMAGES ---
 
-# animation html scripts
-spotify_animation_html = """
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-<lottie-player src="https://assets10.lottiefiles.com/packages/lf20_a6hjf7nd.json"  background="transparent"  speed="1"  style="width: 110px; height: 110px;"  loop  autoplay></lottie-player> """
-astro_animation_html = """
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-<lottie-player src="https://assets4.lottiefiles.com/packages/lf20_euaveaxu.json"  background="transparent"  speed="1"  style="width: 170px; height: 160px;"  loop  autoplay></lottie-player> """
+# animation
 
+spotify_animation = "spotify_animation.gif"
+music_animation = "music_animation.gif"
+
+# spotify_animation_html = """
+# <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+# <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_a6hjf7nd.json" background="#9bf0e1" speed="1" style="width: 110px; height: 110px; background-color: #9bf0e1; border: none;" loop autoplay></lottie-player>"""
+
+# astro_animation_html = """
+# <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+# <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_euaveaxu.json"  background="transparent"  speed="1"  style="width: 170px; height: 160px;"  loop  autoplay></lottie-player> """
 
 # images
 spotify_logo = "https://www.freepnglogos.com/uploads/spotify-logo-png/spotify-icon-black-17.png"
@@ -81,7 +85,7 @@ heading_animation = "<p style = 'font-size: 70px;'><b>Spotify Music Recommendati
 # Intro lines
 intro_para = """
 <p style = "font-size: 24px;">
-This recommendation system, along with the website, has been created by the team <span style="font-size:120%"><b>Not a Modelling Agency</b></span>.
+This recommendation system, along with the website, has been created by the team <span style="font-size:120%"><b>Not a Modelling Agency</b></span> as part of the Final Project for Univ.AI\'s DS1C4 Course.
 <br> <br>
 To try out the algorithm, pick out five songs from our database which consists of <b> Billboard Hot 100 tracks</b> from the time period <b>1960 to 2021</b> and our system will analyse various attributes such as artist, artist's genres, audio features, and more to recommend you songs that we hope you might like. <br> <br>
 Along with the recommendations, you also get to see the song and artist profiles of your selected tracks. These song profiles have been created using the features Spotify itself provides. You can find out more in depth about each feature <a href = {https://developer.spotify.com/discover/#:~:text=Audio%20Features%20%26%20Analysis,-Explore%20audio%20features&text=For%20more%20advanced%20use%20cases,Context%3A%20Liveness%2C%20Acousticness}> <i>here</i></a>.
@@ -92,7 +96,8 @@ with st.container():
     st.subheader("Not a Modelling Agency is proud to present,")
     left_col, right_col = st.columns([1, 9])
     with left_col:
-        components.html(spotify_animation_html)
+        st.image(spotify_animation, use_column_width=True)
+        # components.html(spotify_animation_html)
     with right_col:
         st.markdown(heading_animation, unsafe_allow_html = True)
         
@@ -163,7 +168,8 @@ with st.container():
             with st.container():
                 left_col, right_col = st.columns([1, 7])
                 with left_col:
-                    components.html(astro_animation_html)
+                    st.image(music_animation, use_column_width=True)
+                    # components.html(astro_animation_html)
                 with right_col:
                     st.markdown("<p style = 'font-size: 36px; font-weight: bold;'> <br> Sit back and stream or ..</p>""",
                                 unsafe_allow_html = True)
