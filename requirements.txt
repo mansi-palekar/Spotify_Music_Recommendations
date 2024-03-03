@@ -1,7 +1,7 @@
 pandas
 numpy
 requests
-streamlit==1.13.0
+streamlit
 streamlit_lottie
 scipy
 scikit-learn
